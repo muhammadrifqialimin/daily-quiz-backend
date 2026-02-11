@@ -2,9 +2,24 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Result extends Model
 {
-    protected $fillable = ['student_id', 'category', 'total_correct', 'total_questions', 'score'];
+    use HasFactory;
+
+    protected $fillable = [
+        'student_id',
+        'category',
+        'total_correct',
+        'total_questions',
+        'score',
+        'answers',
+    ];
+
+    public function student()
+    {
+        return $this->belongsTo(Student::class);
+    }
 }
